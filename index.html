@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10151f">
+<meta name="description" content="SureMix Live church media production controller prototype">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<title>SureMix Live</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">SM</div><div><strong>SureMix Live</strong><small>CHURCH MEDIA CONTROL</small></div></div>
+  <div class="top-actions"><span id="connection" class="status"><i></i> LOCAL DEMO</span><button id="installBtn" class="outline hidden">Install</button></div>
+</header>
+<main>
+  <section class="welcome">
+    <div><p class="eyebrow">LIVE PRODUCTION WORKSPACE</p><h1>Good service.<br><span>Great production.</span></h1><p class="muted">A first working interface for your church media team.</p></div>
+    <div class="live-pill"><span></span> STANDBY</div>
+  </section>
+
+  <section class="monitor-grid">
+    <article class="monitor-card">
+      <div class="card-head"><b>PREVIEW</b><span class="tag">READY</span></div>
+      <div id="previewScreen" class="screen"><div class="screen-mark">PREVIEW</div><strong id="previewName">Camera 1</strong><small>Selected source</small></div>
+      <div class="source-row" id="sourceButtons"></div>
+    </article>
+    <article class="monitor-card program-card">
+      <div class="card-head"><b>PROGRAM</b><span class="tag red">ON AIR</span></div>
+      <div id="programScreen" class="screen"><div class="screen-mark">PROGRAM</div><strong id="programName">Camera 1</strong><small>Output simulation</small><div id="programOverlay" class="program-overlay"></div></div>
+      <div class="switch-row"><button id="cutBtn" class="action">CUT</button><button id="fadeBtn" class="action secondary">FADE</button><button id="blackBtn" class="action danger">BLACK</button></div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><div><p class="eyebrow">PRODUCTION SOURCES</p><h2>Inputs</h2></div><span class="muted tiny">Tap a source to preview</span></div>
+    <div class="input-grid" id="inputGrid"></div>
+  </section>
+
+  <section class="two-col">
+    <section class="panel">
+      <div class="section-title"><div><p class="eyebrow">SOUND DESK</p><h2>Audio mixer</h2></div><span class="audio-indicator">● AUDIO</span></div>
+      <div class="slider-line"><label for="master">Master <b id="masterVal">80%</b></label><input id="master" type="range" min="0" max="100" value="80"></div>
+      <div class="slider-line"><label for="mic">Microphone <b id="micVal">75%</b></label><input id="mic" type="range" min="0" max="100" value="75"></div>
+      <div class="slider-line"><label for="music">Music <b id="musicVal">60%</b></label><input id="music" type="range" min="0" max="100" value="60"></div>
+      <p class="hint">These are saved control values in this prototype; they do not yet change physical audio devices.</p>
+    </section>
+    <section class="panel">
+      <div class="section-title"><div><p class="eyebrow">SERVICE GRAPHICS</p><h2>On-screen text</h2></div></div>
+      <label class="field-label" for="graphicType">Overlay type</label>
+      <select id="graphicType"><option value="lower">Lower third</option><option value="verse">Bible verse</option><option value="lyrics">Worship lyrics</option><option value="notice">Announcement</option></select>
+      <label class="field-label" for="graphicTitle">Heading</label><input id="graphicTitle" type="text" placeholder="e.g. Sunday Worship">
+      <label class="field-label" for="graphicBody">Text</label><textarea id="graphicBody" rows="3" placeholder="Enter pastor's name, Bible verse, lyrics or announcement"></textarea>
+      <div class="button-row"><button id="showGraphic" class="action">SHOW GRAPHIC</button><button id="hideGraphic" class="action secondary">HIDE</button></div>
+    </section>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><div><p class="eyebrow">QUICK SCENES</p><h2>Save a setup</h2></div></div>
+    <div class="scene-row">
+      <button class="scene" data-scene="Worship"><b>♪</b><span>Worship</span></button>
+      <button class="scene" data-scene="Sermon"><b>▤</b><span>Sermon</span></button>
+      <button class="scene" data-scene="Announcement"><b>✦</b><span>Announcement</span></button>
+      <button class="scene" data-scene="Prayer"><b>✧</b><span>Prayer</span></button>
+    </div>
+    <p id="sceneMessage" class="hint">Choose a scene to load its suggested production setup.</p>
+  </section>
+  <footer><b>SureMix Live</b> · Version 1.0 prototype <span>Offline-ready after first load</span></footer>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
